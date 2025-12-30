@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NFL Prediction Model | Dan Wong</title>
-    <meta name="description" content="Machine learning model predicting NFL games. 68% picking winners, 57% against the spread.">
+    <meta name="description" content="Machine learning model predicting NFL games. 65% picking winners, 52% against the spread.">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -238,8 +238,22 @@
 
         .game-picks {
             display: flex;
-            gap: 10px;
-            align-items: center;
+            gap: 12px;
+            align-items: stretch;
+        }
+
+        .pick-box {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .pick-label {
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--color-text-muted);
         }
 
         .pick-badge {
@@ -248,7 +262,7 @@
             font-size: 13px;
             font-weight: 600;
             text-align: center;
-            min-width: 90px;
+            min-width: 100px;
         }
 
         .pick-badge.winner {
@@ -469,11 +483,11 @@
             
             <div class="stats-row">
                 <div class="stat-card">
-                    <div class="stat-value green">68%</div>
+                    <div class="stat-value green">65%</div>
                     <div class="stat-label">Picking Winners</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value gold">57%</div>
+                    <div class="stat-value gold">52%</div>
                     <div class="stat-label">Against the Spread</div>
                 </div>
             </div>
@@ -484,190 +498,286 @@
     <section class="section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Week 17 Picks</h2>
-                <span class="section-badge">Updated Dec 23</span>
+                <h2 class="section-title">Week 18 Picks</h2>
+                <span class="section-badge">Updated Dec 30</span>
             </div>
             
             <div class="games-grid">
                 <div class="game-card">
                     <div class="game-matchup">
-                        <div class="game-teams">SEA <span class="at">@</span> CAR</div>
-                        <div class="game-spread">Vegas: SEA -7.5 | Model: SEA -20.0</div>
+                        <div class="game-teams">SEA <span class="at">@</span> SF</div>
+                        <div class="game-spread">Vegas: SEA -1.5 | Model: SEA -10.9</div>
                     </div>
                     <div class="game-picks">
-                        <span class="pick-badge winner">SEA wins</span>
-                        <span class="pick-badge ats">SEA -7.5</span>
+                        <div class="pick-box">
+                            <span class="pick-label">Winner Pick</span>
+                            <span class="pick-badge winner">SEA</span>
+                        </div>
+                        <div class="pick-box">
+                            <span class="pick-label">Against the Spread Pick</span>
+                            <span class="pick-badge ats">SEA -1.5</span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="game-card">
                     <div class="game-matchup">
-                        <div class="game-teams">NE <span class="at">@</span> NYJ</div>
-                        <div class="game-spread">Vegas: NE -13.5 | Model: NE -25.8</div>
+                        <div class="game-teams">TEN <span class="at">@</span> JAX</div>
+                        <div class="game-spread">Vegas: JAX -12.5 | Model: JAX -22.3</div>
                     </div>
                     <div class="game-picks">
-                        <span class="pick-badge winner">NE wins</span>
-                        <span class="pick-badge ats">NE -13.5</span>
+                        <div class="pick-box">
+                            <span class="pick-label">Winner Pick</span>
+                            <span class="pick-badge winner">JAX</span>
+                        </div>
+                        <div class="pick-box">
+                            <span class="pick-label">Against the Spread Pick</span>
+                            <span class="pick-badge ats">JAX -12.5</span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="game-card">
                     <div class="game-matchup">
-                        <div class="game-teams">DET <span class="at">@</span> MIN</div>
-                        <div class="game-spread">Vegas: DET -6.0 | Model: DET -10.3</div>
+                        <div class="game-teams">GB <span class="at">@</span> MIN</div>
+                        <div class="game-spread">Vegas: GB -6.5 | Model: GB -7.2</div>
                     </div>
                     <div class="game-picks">
-                        <span class="pick-badge winner">DET wins</span>
-                        <span class="pick-badge ats">DET -6.0</span>
+                        <div class="pick-box">
+                            <span class="pick-label">Winner Pick</span>
+                            <span class="pick-badge winner">GB</span>
+                        </div>
+                        <div class="pick-box">
+                            <span class="pick-label">Against the Spread Pick</span>
+                            <span class="pick-badge ats">GB -6.5</span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="game-card">
                     <div class="game-matchup">
-                        <div class="game-teams">JAX <span class="at">@</span> IND</div>
-                        <div class="game-spread">Vegas: JAX -6.5 | Model: IND +0.7</div>
+                        <div class="game-teams">IND <span class="at">@</span> HOU</div>
+                        <div class="game-spread">Vegas: HOU -10.5 | Model: HOU -18.6</div>
                     </div>
                     <div class="game-picks">
-                        <span class="pick-badge winner">JAX wins</span>
-                        <span class="pick-badge ats">IND +6.5</span>
+                        <div class="pick-box">
+                            <span class="pick-label">Winner Pick</span>
+                            <span class="pick-badge winner">HOU</span>
+                        </div>
+                        <div class="pick-box">
+                            <span class="pick-label">Against the Spread Pick</span>
+                            <span class="pick-badge ats">HOU -10.5</span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="game-card">
                     <div class="game-matchup">
-                        <div class="game-teams">NYG <span class="at">@</span> LV</div>
-                        <div class="game-spread">Vegas: NYG +1.5 | Model: LV -4.9</div>
+                        <div class="game-teams">NYJ <span class="at">@</span> BUF</div>
+                        <div class="game-spread">Vegas: BUF -7.0 | Model: BUF -16.2</div>
                     </div>
                     <div class="game-picks">
-                        <span class="pick-badge winner">LV wins</span>
-                        <span class="pick-badge ats">LV -1.5</span>
+                        <div class="pick-box">
+                            <span class="pick-label">Winner Pick</span>
+                            <span class="pick-badge winner">BUF</span>
+                        </div>
+                        <div class="pick-box">
+                            <span class="pick-label">Against the Spread Pick</span>
+                            <span class="pick-badge ats">BUF -7.0</span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="game-card">
                     <div class="game-matchup">
-                        <div class="game-teams">DAL <span class="at">@</span> WAS</div>
-                        <div class="game-spread">Vegas: DAL -7.0 | Model: DAL -9.6</div>
+                        <div class="game-teams">WAS <span class="at">@</span> PHI</div>
+                        <div class="game-spread">Vegas: PHI -7.0 | Model: PHI -28.5</div>
                     </div>
                     <div class="game-picks">
-                        <span class="pick-badge winner">DAL wins</span>
-                        <span class="pick-badge ats">DAL -7.0</span>
+                        <div class="pick-box">
+                            <span class="pick-label">Winner Pick</span>
+                            <span class="pick-badge winner">PHI</span>
+                        </div>
+                        <div class="pick-box">
+                            <span class="pick-label">Against the Spread Pick</span>
+                            <span class="pick-badge ats">PHI -7.0</span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="game-card">
                     <div class="game-matchup">
-                        <div class="game-teams">DEN <span class="at">@</span> KC</div>
-                        <div class="game-spread">Vegas: DEN -13.5 | Model: DEN -10.1</div>
+                        <div class="game-teams">MIA <span class="at">@</span> NE</div>
+                        <div class="game-spread">Vegas: NE -10.5 | Model: NE -20.9</div>
                     </div>
                     <div class="game-picks">
-                        <span class="pick-badge winner">DEN wins</span>
-                        <span class="pick-badge ats">KC +13.5</span>
+                        <div class="pick-box">
+                            <span class="pick-label">Winner Pick</span>
+                            <span class="pick-badge winner">NE</span>
+                        </div>
+                        <div class="pick-box">
+                            <span class="pick-label">Against the Spread Pick</span>
+                            <span class="pick-badge ats">NE -10.5</span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="game-card">
                     <div class="game-matchup">
-                        <div class="game-teams">HOU <span class="at">@</span> LAC</div>
-                        <div class="game-spread">Vegas: HOU +2.5 | Model: HOU +0.1</div>
+                        <div class="game-teams">ARI <span class="at">@</span> LA</div>
+                        <div class="game-spread">Vegas: LA -7.5 | Model: LA -21.3</div>
                     </div>
                     <div class="game-picks">
-                        <span class="pick-badge winner">LAC wins</span>
-                        <span class="pick-badge ats">HOU +2.5</span>
+                        <div class="pick-box">
+                            <span class="pick-label">Winner Pick</span>
+                            <span class="pick-badge winner">LA</span>
+                        </div>
+                        <div class="pick-box">
+                            <span class="pick-label">Against the Spread Pick</span>
+                            <span class="pick-badge ats">LA -7.5</span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="game-card">
                     <div class="game-matchup">
-                        <div class="game-teams">BAL <span class="at">@</span> GB</div>
-                        <div class="game-spread">Vegas: BAL +2.5 | Model: BAL +4.7</div>
+                        <div class="game-teams">CAR <span class="at">@</span> TB</div>
+                        <div class="game-spread">Vegas: TB -2.5 | Model: TB -10.2</div>
                     </div>
                     <div class="game-picks">
-                        <span class="pick-badge winner">GB wins</span>
-                        <span class="pick-badge ats">GB -2.5</span>
+                        <div class="pick-box">
+                            <span class="pick-label">Winner Pick</span>
+                            <span class="pick-badge winner">TB</span>
+                        </div>
+                        <div class="pick-box">
+                            <span class="pick-label">Against the Spread Pick</span>
+                            <span class="pick-badge ats">TB -2.5</span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="game-card">
                     <div class="game-matchup">
-                        <div class="game-teams">PIT <span class="at">@</span> CLE</div>
-                        <div class="game-spread">Vegas: PIT -3.5 | Model: PIT -7.1</div>
+                        <div class="game-teams">NO <span class="at">@</span> ATL</div>
+                        <div class="game-spread">Vegas: ATL -3.0 | Model: ATL -8.5</div>
                     </div>
                     <div class="game-picks">
-                        <span class="pick-badge winner">PIT wins</span>
-                        <span class="pick-badge ats">PIT -3.5</span>
+                        <div class="pick-box">
+                            <span class="pick-label">Winner Pick</span>
+                            <span class="pick-badge winner">ATL</span>
+                        </div>
+                        <div class="pick-box">
+                            <span class="pick-label">Against the Spread Pick</span>
+                            <span class="pick-badge ats">ATL -3.0</span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="game-card">
                     <div class="game-matchup">
-                        <div class="game-teams">TB <span class="at">@</span> MIA</div>
-                        <div class="game-spread">Vegas: TB -5.5 | Model: TB -1.9</div>
+                        <div class="game-teams">KC <span class="at">@</span> LV</div>
+                        <div class="game-spread">Vegas: KC -5.5 | Model: KC -1.8</div>
                     </div>
                     <div class="game-picks">
-                        <span class="pick-badge winner">TB wins</span>
-                        <span class="pick-badge ats">MIA +5.5</span>
+                        <div class="pick-box">
+                            <span class="pick-label">Winner Pick</span>
+                            <span class="pick-badge winner">KC</span>
+                        </div>
+                        <div class="pick-box">
+                            <span class="pick-label">Against the Spread Pick</span>
+                            <span class="pick-badge ats">LV +5.5</span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="game-card">
                     <div class="game-matchup">
-                        <div class="game-teams">NO <span class="at">@</span> TEN</div>
-                        <div class="game-spread">Vegas: NO -2.5 | Model: NO -0.5</div>
+                        <div class="game-teams">BAL <span class="at">@</span> PIT</div>
+                        <div class="game-spread">Vegas: BAL -3.5 | Model: BAL -2.6</div>
                     </div>
                     <div class="game-picks">
-                        <span class="pick-badge winner">NO wins</span>
-                        <span class="pick-badge ats">TEN +2.5</span>
+                        <div class="pick-box">
+                            <span class="pick-label">Winner Pick</span>
+                            <span class="pick-badge winner">BAL</span>
+                        </div>
+                        <div class="pick-box">
+                            <span class="pick-label">Against the Spread Pick</span>
+                            <span class="pick-badge ats">PIT +3.5</span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="game-card">
                     <div class="game-matchup">
-                        <div class="game-teams">CHI <span class="at">@</span> SF</div>
-                        <div class="game-spread">Vegas: CHI +3.0 | Model: CHI +0.4</div>
+                        <div class="game-teams">DAL <span class="at">@</span> NYG</div>
+                        <div class="game-spread">Vegas: DAL -3.5 | Model: DAL +1.1</div>
                     </div>
                     <div class="game-picks">
-                        <span class="pick-badge winner">SF wins</span>
-                        <span class="pick-badge ats">CHI +3.0</span>
+                        <div class="pick-box">
+                            <span class="pick-label">Winner Pick</span>
+                            <span class="pick-badge winner">NYG</span>
+                        </div>
+                        <div class="pick-box">
+                            <span class="pick-label">Against the Spread Pick</span>
+                            <span class="pick-badge ats">NYG +3.5</span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="game-card">
                     <div class="game-matchup">
-                        <div class="game-teams">LA <span class="at">@</span> ATL</div>
-                        <div class="game-spread">Vegas: LA -8.5 | Model: LA -11.5</div>
+                        <div class="game-teams">LAC <span class="at">@</span> DEN</div>
+                        <div class="game-spread">Vegas: DEN -12.5 | Model: DEN -9.8</div>
                     </div>
                     <div class="game-picks">
-                        <span class="pick-badge winner">LA wins</span>
-                        <span class="pick-badge ats">LA -8.5</span>
+                        <div class="pick-box">
+                            <span class="pick-label">Winner Pick</span>
+                            <span class="pick-badge winner">DEN</span>
+                        </div>
+                        <div class="pick-box">
+                            <span class="pick-label">Against the Spread Pick</span>
+                            <span class="pick-badge ats">LAC +12.5</span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="game-card">
                     <div class="game-matchup">
-                        <div class="game-teams">ARI <span class="at">@</span> CIN</div>
-                        <div class="game-spread">Vegas: ARI +7.0 | Model: ARI +5.7</div>
+                        <div class="game-teams">CLE <span class="at">@</span> CIN</div>
+                        <div class="game-spread">Vegas: CIN -7.5 | Model: CIN -7.1</div>
                     </div>
                     <div class="game-picks">
-                        <span class="pick-badge winner">CIN wins</span>
-                        <span class="pick-badge ats">ARI +7.0</span>
+                        <div class="pick-box">
+                            <span class="pick-label">Winner Pick</span>
+                            <span class="pick-badge winner">CIN</span>
+                        </div>
+                        <div class="pick-box">
+                            <span class="pick-label">Against the Spread Pick</span>
+                            <span class="pick-badge ats">CLE +7.5</span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="game-card">
                     <div class="game-matchup">
-                        <div class="game-teams">PHI <span class="at">@</span> BUF</div>
-                        <div class="game-spread">Vegas: PHI +1.5 | Model: PHI +0.5</div>
+                        <div class="game-teams">DET <span class="at">@</span> CHI</div>
+                        <div class="game-spread">Vegas: DET -3.0 | Model: DET -2.5</div>
                     </div>
                     <div class="game-picks">
-                        <span class="pick-badge winner">BUF wins</span>
-                        <span class="pick-badge ats">PHI +1.5</span>
+                        <div class="pick-box">
+                            <span class="pick-label">Winner Pick</span>
+                            <span class="pick-badge winner">DET</span>
+                        </div>
+                        <div class="pick-box">
+                            <span class="pick-label">Against the Spread Pick</span>
+                            <span class="pick-badge ats">CHI +3.0</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <p style="color: var(--color-text-muted); font-size: 13px; margin-top: 16px; text-align: center;">
-                Week 17 picks based on QB-adjusted EPA model
+                Week 18 picks based on QB-adjusted EPA model
             </p>
         </div>
     </section>
