@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NFL Prediction Model | Dan Wong</title>
-    <meta name="description" content="Machine learning model predicting NFL games. 65% picking winners, 52% against the spread.">
+    <meta name="description" content="Machine learning model predicting NFL games. 65% picking winners, 52% against the spread through regular season and playoffs.">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -128,7 +128,7 @@
         .hero-subtitle {
             color: var(--color-text-muted);
             font-size: 17px;
-            max-width: 500px;
+            max-width: 600px;
             margin: 0 auto 40px;
         }
 
@@ -158,6 +158,7 @@
 
         .stat-value.green { color: var(--color-green); }
         .stat-value.gold { color: var(--color-gold); }
+        .stat-value.red { color: var(--color-red); }
 
         .stat-label {
             color: var(--color-text-muted);
@@ -196,6 +197,56 @@
             letter-spacing: 0.3px;
         }
 
+        .section-badge.blue {
+            background: var(--color-blue-bg);
+            color: var(--color-blue);
+        }
+
+        .section-badge.gold {
+            background: var(--color-gold-bg);
+            color: var(--color-gold);
+        }
+
+        /* Results Summary */
+        .results-summary {
+            background: var(--color-card);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .result-item:last-child {
+            border-bottom: none;
+        }
+
+        .result-label {
+            color: var(--color-text-muted);
+            font-size: 14px;
+        }
+
+        .result-value {
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .result-value.green { color: var(--color-green); }
+        .result-value.red { color: var(--color-red); }
+
         /* Game Cards */
         .games-grid {
             display: flex;
@@ -212,6 +263,10 @@
             grid-template-columns: 1fr auto;
             gap: 16px;
             align-items: center;
+        }
+
+        .game-card.result {
+            opacity: 0.8;
         }
 
         .game-matchup {
@@ -233,96 +288,84 @@
 
         .game-spread {
             color: var(--color-text-muted);
-            font-size: 14px;
+            font-size: 13px;
+        }
+
+        .game-result {
+            color: var(--color-text-muted);
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        .game-result .correct {
+            color: var(--color-green);
+            font-weight: 600;
+        }
+
+        .game-result .incorrect {
+            color: var(--color-red);
+            font-weight: 600;
         }
 
         .game-picks {
             display: flex;
             gap: 12px;
-            align-items: stretch;
+            flex-wrap: wrap;
+            justify-content: flex-end;
         }
 
         .pick-box {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            align-items: center;
+            gap: 6px;
         }
 
         .pick-label {
-            font-size: 10px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
             color: var(--color-text-muted);
+            font-size: 11px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
         }
 
         .pick-badge {
-            padding: 8px 14px;
-            border-radius: 8px;
+            background: var(--color-border);
+            color: var(--color-text);
             font-size: 13px;
             font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 8px;
+            min-width: 80px;
             text-align: center;
-            min-width: 100px;
         }
 
         .pick-badge.winner {
-            background: var(--color-blue-bg);
-            color: var(--color-blue);
-        }
-
-        .pick-badge.ats {
             background: var(--color-green-bg);
             color: var(--color-green);
         }
 
-        /* Results Table */
-        .results-table {
-            width: 100%;
-            border-collapse: collapse;
+        .pick-badge.ats {
+            background: var(--color-gold-bg);
+            color: var(--color-gold);
         }
 
-        .results-table th,
-        .results-table td {
-            padding: 14px 16px;
-            text-align: left;
-            border-bottom: 1px solid var(--color-border);
-        }
-
-        .results-table th {
-            color: var(--color-text-muted);
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .results-table td {
-            font-size: 14px;
-        }
-
-        .results-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .result-good {
+        .pick-badge.correct {
+            background: var(--color-green-bg);
             color: var(--color-green);
-            font-weight: 600;
         }
 
-        .result-bad {
+        .pick-badge.incorrect {
+            background: var(--color-red-bg);
             color: var(--color-red);
-            font-weight: 600;
-        }
-
-        .result-neutral {
-            color: var(--color-text-muted);
         }
 
         /* How It Works */
         .how-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 32px;
         }
 
         .how-card {
@@ -333,8 +376,8 @@
         }
 
         .how-number {
-            width: 32px;
-            height: 32px;
+            width: 36px;
+            height: 36px;
             background: var(--color-blue-bg);
             color: var(--color-blue);
             border-radius: 8px;
@@ -342,8 +385,8 @@
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 14px;
-            margin-bottom: 14px;
+            font-size: 16px;
+            margin-bottom: 12px;
         }
 
         .how-title {
@@ -355,39 +398,38 @@
         .how-text {
             color: var(--color-text-muted);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.5;
         }
 
         /* Disclaimer */
         .disclaimer {
-            background: var(--color-card);
-            border: 1px solid var(--color-border);
+            background: var(--color-red-bg);
+            border: 1px solid rgba(239, 68, 68, 0.3);
             border-radius: 12px;
             padding: 20px;
-            margin-top: 32px;
         }
 
         .disclaimer-title {
-            font-size: 13px;
-            font-weight: 600;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--color-red);
             margin-bottom: 8px;
-            color: var(--color-text-muted);
         }
 
         .disclaimer-text {
             color: var(--color-text-muted);
             font-size: 13px;
-            line-height: 1.6;
+            line-height: 1.5;
         }
 
         /* Footer */
         footer {
-            padding: 32px 0;
+            padding: 48px 0 60px;
             border-top: 1px solid var(--color-border);
-            text-align: center;
         }
 
         .footer-text {
+            text-align: center;
             color: var(--color-text-muted);
             font-size: 13px;
         }
@@ -395,32 +437,44 @@
         .footer-link {
             color: var(--color-text);
             text-decoration: none;
+            transition: color 0.2s;
         }
 
         .footer-link:hover {
-            text-decoration: underline;
+            color: var(--color-green);
         }
 
         /* Responsive */
-        @media (min-width: 640px) {
-            .hero {
-                padding: 80px 0 60px;
+        @media (max-width: 640px) {
+            .stats-row {
+                grid-template-columns: 1fr;
+                max-width: 280px;
             }
 
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .game-card {
+                padding: 16px;
+            }
+
+            .section {
+                padding: 32px 0;
+            }
+
+            .how-card {
+                padding: 20px;
+            }
+
+            .how-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (min-width: 641px) {
             .hero-title {
                 font-size: 48px;
-            }
-
-            .stats-row {
-                gap: 20px;
-            }
-
-            .stat-card {
-                padding: 32px 24px;
-            }
-
-            .stat-value {
-                font-size: 56px;
             }
 
             .game-card {
@@ -477,70 +531,224 @@
     <!-- Hero -->
     <section class="hero">
         <div class="container">
-            <span class="hero-badge">🏈 2025 Season</span>
+            <span class="hero-badge">🏈 2025 Season + Playoffs</span>
             <h1 class="hero-title">Can Machine Learning<br>Beat Vegas?</h1>
-            <p class="hero-subtitle">A QB-adjusted spread model using EPA ratings. Six months of building and testing to find out.</p>
+            <p class="hero-subtitle">A QB-adjusted spread model using EPA ratings. Tracking performance through regular season and into the playoffs.</p>
+        </div>
+    </section>
+
+    <!-- Regular Season Summary -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Regular Season Performance</h2>
+                <span class="section-badge">Weeks 1-18</span>
+            </div>
             
-            <div class="stats-row">
-                <div class="stat-card">
-                    <div class="stat-value green">65%</div>
-                    <div class="stat-label">Picking Winners</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value gold">52%</div>
-                    <div class="stat-label">Against the Spread</div>
+            <div class="results-summary" style="padding: 48px 40px;">
+                <div style="display: flex; flex-direction: column; gap: 40px;">
+                    <div class="result-item" style="padding: 20px 0; border-bottom: 1px solid var(--color-border);">
+                        <span class="result-label" style="font-size: 16px;">Total Games</span>
+                        <span class="result-value" style="font-size: 32px;">272</span>
+                    </div>
+                    <div class="result-item" style="padding: 20px 0; border-bottom: 1px solid var(--color-border);">
+                        <span class="result-label" style="font-size: 16px;">Winners Record</span>
+                        <span class="result-value green" style="font-size: 32px;">177-95 (65.1%)</span>
+                    </div>
+                    <div class="result-item" style="padding: 20px 0; border-bottom: none;">
+                        <span class="result-label" style="font-size: 16px;">Against the Spread</span>
+                        <span class="result-value gold" style="font-size: 32px;">139-128-5 (52.1%)</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- This Week's Picks -->
+    <!-- Wild Card Results -->
     <section class="section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Wild Card Round Picks</h2>
-                <span class="section-badge">January 11-13</span>
+                <h2 class="section-title">Wild Card Round Results</h2>
+                <span class="section-badge gold">January 11-13</span>
+            </div>
+
+            <div class="results-summary">
+                <div class="results-grid">
+                    <div>
+                        <div class="result-item">
+                            <span class="result-label">Winners Picked</span>
+                            <span class="result-value green">4-2 (66.7%)</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Against the Spread</span>
+                            <span class="result-value red">2-4 (33.3%)</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="result-item">
+                            <span class="result-label">Big Wins</span>
+                            <span class="result-value green">NE, HOU covered</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Biggest Miss</span>
+                            <span class="result-value red">SF upset PHI</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="games-grid">
+                <div class="game-card result">
+                    <div class="game-matchup">
+                        <div class="game-teams">GB <span class="at">@</span> CHI</div>
+                        <div class="game-spread">Vegas: CHI -1.5 | Model: CHI -0.7</div>
+                        <div class="game-result">Result: CHI won, didn't cover • <span class="correct">✓ Winner</span> <span class="incorrect">✗ ATS</span></div>
+                    </div>
+                    <div class="game-picks">
+                        <div class="pick-box">
+                            <span class="pick-label">Winner</span>
+                            <span class="pick-badge correct">CHI ✓</span>
+                        </div>
+                        <div class="pick-box">
+                            <span class="pick-label">ATS</span>
+                            <span class="pick-badge incorrect">CHI ✗</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="game-card result">
+                    <div class="game-matchup">
+                        <div class="game-teams">SF <span class="at">@</span> PHI</div>
+                        <div class="game-spread">Vegas: PHI -4.5 | Model: PHI -10.2</div>
+                        <div class="game-result">Result: SF upset win • <span class="incorrect">✗ Winner</span> <span class="incorrect">✗ ATS</span></div>
+                    </div>
+                    <div class="game-picks">
+                        <div class="pick-box">
+                            <span class="pick-label">Winner</span>
+                            <span class="pick-badge incorrect">PHI ✗</span>
+                        </div>
+                        <div class="pick-box">
+                            <span class="pick-label">ATS</span>
+                            <span class="pick-badge incorrect">PHI ✗</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="game-card result">
+                    <div class="game-matchup">
+                        <div class="game-teams">LA <span class="at">@</span> CAR</div>
+                        <div class="game-spread">Vegas: LA -10.5 | Model: LA -13.3</div>
+                        <div class="game-result">Result: LA won by 3 • <span class="correct">✓ Winner</span> <span class="incorrect">✗ ATS</span></div>
+                    </div>
+                    <div class="game-picks">
+                        <div class="pick-box">
+                            <span class="pick-label">Winner</span>
+                            <span class="pick-badge correct">LA ✓</span>
+                        </div>
+                        <div class="pick-box">
+                            <span class="pick-label">ATS</span>
+                            <span class="pick-badge incorrect">LA ✗</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="game-card result">
+                    <div class="game-matchup">
+                        <div class="game-teams">LAC <span class="at">@</span> NE</div>
+                        <div class="game-spread">Vegas: NE -3.5 | Model: NE -15.3</div>
+                        <div class="game-result">Result: NE dominated, covered easily • <span class="correct">✓ Winner</span> <span class="correct">✓ ATS</span></div>
+                    </div>
+                    <div class="game-picks">
+                        <div class="pick-box">
+                            <span class="pick-label">Winner</span>
+                            <span class="pick-badge correct">NE ✓</span>
+                        </div>
+                        <div class="pick-box">
+                            <span class="pick-label">ATS</span>
+                            <span class="pick-badge correct">NE ✓</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="game-card result">
+                    <div class="game-matchup">
+                        <div class="game-teams">BUF <span class="at">@</span> JAX</div>
+                        <div class="game-spread">Vegas: BUF -1.5 | Model: JAX -1.5</div>
+                        <div class="game-result">Result: BUF won on road • <span class="incorrect">✗ Winner</span> <span class="incorrect">✗ ATS</span></div>
+                    </div>
+                    <div class="game-picks">
+                        <div class="pick-box">
+                            <span class="pick-label">Winner</span>
+                            <span class="pick-badge incorrect">JAX ✗</span>
+                        </div>
+                        <div class="pick-box">
+                            <span class="pick-label">ATS</span>
+                            <span class="pick-badge incorrect">JAX ✗</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="game-card result">
+                    <div class="game-matchup">
+                        <div class="game-teams">HOU <span class="at">@</span> PIT</div>
+                        <div class="game-spread">Vegas: HOU -3.5 | Model: HOU -3.8</div>
+                        <div class="game-result">Result: HOU covered • <span class="correct">✓ Winner</span> <span class="correct">✓ ATS</span></div>
+                    </div>
+                    <div class="game-picks">
+                        <div class="pick-box">
+                            <span class="pick-label">Winner</span>
+                            <span class="pick-badge correct">HOU ✓</span>
+                        </div>
+                        <div class="pick-box">
+                            <span class="pick-label">ATS</span>
+                            <span class="pick-badge correct">HOU ✓</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p style="color: var(--color-text-muted); font-size: 14px; margin-top: 16px; line-height: 1.6;">
+                <strong>Lessons Learned:</strong> Model overconfident on margins (predicted PHI -10, LA -13 both failed to cover). Road wild card upsets happen (SF beat PHI). Hot teams with home field delivered (NE crushed). Elite QBs matter in playoffs.
+            </p>
+        </div>
+    </section>
+
+    <!-- Divisional Round Predictions -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Divisional Round Predictions</h2>
+                <span class="section-badge blue">January 17-18</span>
             </div>
             
             <div class="games-grid">
                 <div class="game-card">
                     <div class="game-matchup">
-                        <div class="game-teams">GB <span class="at">@</span> CHI</div>
-                        <div class="game-spread">Vegas: CHI -1.5 | Model: CHI -0.7</div>
+                        <div class="game-teams">SF <span class="at">@</span> SEA</div>
+                        <div class="game-spread">Vegas: SEA -7.5 | Model: SEA -18.0</div>
+                        <div class="game-result" style="color: var(--color-blue);">
+                            SEA bye week + home revenge vs Week 18 • SF upset PHI, surging • Purdy playoff experience > Darnold
+                        </div>
                     </div>
                     <div class="game-picks">
                         <div class="pick-box">
                             <span class="pick-label">Winner Pick</span>
-                            <span class="pick-badge winner">CHI</span>
+                            <span class="pick-badge winner">SEA</span>
                         </div>
                         <div class="pick-box">
-                            <span class="pick-label">Against the Spread Pick</span>
-                            <span class="pick-badge ats">GB +1.5</span>
+                            <span class="pick-label">ATS Pick</span>
+                            <span class="pick-badge ats">SEA -7.5</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="game-card">
                     <div class="game-matchup">
-                        <div class="game-teams">SF <span class="at">@</span> PHI</div>
-                        <div class="game-spread">Vegas: PHI -4.5 | Model: PHI -10.2</div>
-                    </div>
-                    <div class="game-picks">
-                        <div class="pick-box">
-                            <span class="pick-label">Winner Pick</span>
-                            <span class="pick-badge winner">PHI</span>
+                        <div class="game-teams">LA <span class="at">@</span> CHI</div>
+                        <div class="game-spread">Vegas: LA -3.5 | Model: LA -0.9</div>
+                        <div class="game-result" style="color: var(--color-blue);">
+                            Essentially even • Stafford playoff experience vs Williams youth • CHI home field + comeback ability
                         </div>
-                        <div class="pick-box">
-                            <span class="pick-label">Against the Spread Pick</span>
-                            <span class="pick-badge ats">PHI -4.5</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="game-card">
-                    <div class="game-matchup">
-                        <div class="game-teams">LA <span class="at">@</span> CAR</div>
-                        <div class="game-spread">Vegas: LA -10.5 | Model: LA -13.3</div>
                     </div>
                     <div class="game-picks">
                         <div class="pick-box">
@@ -548,16 +756,39 @@
                             <span class="pick-badge winner">LA</span>
                         </div>
                         <div class="pick-box">
-                            <span class="pick-label">Against the Spread Pick</span>
-                            <span class="pick-badge ats">LA -10.5</span>
+                            <span class="pick-label">ATS Pick</span>
+                            <span class="pick-badge ats">CHI +3.5</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="game-card">
                     <div class="game-matchup">
-                        <div class="game-teams">LAC <span class="at">@</span> NE</div>
-                        <div class="game-spread">Vegas: NE -3.5 | Model: NE -15.3</div>
+                        <div class="game-teams">BUF <span class="at">@</span> DEN</div>
+                        <div class="game-spread">Vegas: DEN -1.5 | Model: DEN -4.3</div>
+                        <div class="game-result" style="color: var(--color-blue);">
+                            DEN bye week + home field • Allen elite playoff QB > Nix rookie • Allen just won on road vs JAX
+                        </div>
+                    </div>
+                    <div class="game-picks">
+                        <div class="pick-box">
+                            <span class="pick-label">Winner Pick</span>
+                            <span class="pick-badge winner">DEN</span>
+                        </div>
+                        <div class="pick-box">
+                            <span class="pick-label">ATS Pick</span>
+                            <span class="pick-badge ats">DEN -1.5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="game-card">
+                    <div class="game-matchup">
+                        <div class="game-teams">HOU <span class="at">@</span> NE</div>
+                        <div class="game-spread">Vegas: NE -3.0 | Model: NE -10.6</div>
+                        <div class="game-result" style="color: var(--color-blue);">
+                            Hot vs Hot • NE crushed LAC, home field • HOU 8+ game win streak • Both young QBs (even experience)
+                        </div>
                     </div>
                     <div class="game-picks">
                         <div class="pick-box">
@@ -565,49 +796,15 @@
                             <span class="pick-badge winner">NE</span>
                         </div>
                         <div class="pick-box">
-                            <span class="pick-label">Against the Spread Pick</span>
-                            <span class="pick-badge ats">NE -3.5</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="game-card">
-                    <div class="game-matchup">
-                        <div class="game-teams">BUF <span class="at">@</span> JAX</div>
-                        <div class="game-spread">Vegas: BUF -1.5 | Model: JAX -1.5</div>
-                    </div>
-                    <div class="game-picks">
-                        <div class="pick-box">
-                            <span class="pick-label">Winner Pick</span>
-                            <span class="pick-badge winner">JAX</span>
-                        </div>
-                        <div class="pick-box">
-                            <span class="pick-label">Against the Spread Pick</span>
-                            <span class="pick-badge ats">JAX +1.5</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="game-card">
-                    <div class="game-matchup">
-                        <div class="game-teams">HOU <span class="at">@</span> PIT</div>
-                        <div class="game-spread">Vegas: HOU -3.5 | Model: HOU -3.8</div>
-                    </div>
-                    <div class="game-picks">
-                        <div class="pick-box">
-                            <span class="pick-label">Winner Pick</span>
-                            <span class="pick-badge winner">HOU</span>
-                        </div>
-                        <div class="pick-box">
-                            <span class="pick-label">Against the Spread Pick</span>
-                            <span class="pick-badge ats">HOU -3.5</span>
+                            <span class="pick-label">ATS Pick</span>
+                            <span class="pick-badge ats">NE -3.0</span>
                         </div>
                     </div>
                 </div>
             </div>
 
             <p style="color: var(--color-text-muted); font-size: 13px; margin-top: 16px; text-align: center;">
-                Wild Card picks based on QB-adjusted EPA model
+                Divisional Round features #1 seeds with bye weeks (SEA, DEN) and battle of hot teams (NE vs HOU)
             </p>
         </div>
     </section>
